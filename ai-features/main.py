@@ -23,7 +23,7 @@ llm = ChatOllama(
 messages = [
     (
         "system",
-        "You are a helpful assistant that translates English to French. Translate the user sentence.",
+        "",
     ),
     ("human", "I love programming."),
 ]
@@ -33,7 +33,8 @@ def get_proj():
     return {"msg":"hyy"}
 
 @app.post("/project")
-def get_proj(name:str,age:int):
+def get_proj(name:str):
+
     return {"msg":age,"name":name}
 
 
