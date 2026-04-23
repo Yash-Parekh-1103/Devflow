@@ -5,7 +5,7 @@ llm = ChatOllama(
     # langchain_ollama expects request headers in client_kwargs
     client_kwargs={
         "headers": {
-            "Authorization": "Bearer 480b45f19348411889380d738a82ab90.t5zdsoPgeXi15jNkb4j3BfmY"
+            "Authorization": "Bearer "
         }
     },
     model="deepseek-v3.2"
