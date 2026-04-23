@@ -15,3 +15,6 @@ export const selectProjectSchema = createSelectSchema(projectTable);
 
 // For INSERT (API requests) — id & createdAt auto-excluded
 export const insertProjectSchema = createInsertSchema(projectTable);
+
+export type NewProject = typeof projectTable.$inferInsert;
+export type Project = typeof projectTable.$inferSelect;
