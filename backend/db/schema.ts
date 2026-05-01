@@ -1,8 +1,20 @@
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
-export const usersTable = pgTable("users", {
+export const projectTable = pgTable("projects", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  name: varchar({ length: 255 }).notNull(),
-  age: integer().notNull(),
-  email: varchar({ length: 255 }).notNull().unique(),
+  owner_email: varchar({ length: 255 }).notNull(),
+  title: varchar({ length: 255 }).notNull(),
+  description: varchar({ length: 255 }).notNull(),
+  category: varchar({ length: 255 }).notNull(),
+  status: varchar({ length: 255 }).notNull().default("not started"),
+  
 });
+
+export const selectProjectSchema = createSelectSchema(projectTable);
+
+// For INSERT (API requests) — id & createdAt auto-excluded
+export const insertProjectSchema = createInsertSchema(projectTable);
+
+export type NewProject = typeof projectTable.$inferInsert;
+export type Project = typeof projectTable.$inferSelect;
