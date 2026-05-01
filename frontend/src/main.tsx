@@ -2,9 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ClerkProvider } from '@clerk/react'
 import './index.css'
-import App from './App.tsx'
 import { BrowserRouter, Routes, Route } from "react-router";
-import Project from './pages/Project.tsx'
+import Navbar from './components/Navbar.tsx'
+import { Dashboard } from './pages/Dashboard.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
@@ -12,10 +12,10 @@ createRoot(document.getElementById('root')!).render(
     {/* Clerk reads the Vite publishable key from env in this integration mode. */}
     {/* @ts-expect-error publishableKey is intentionally sourced from env, not passed as a prop. */}
     <ClerkProvider afterSignOutUrl="/">
+    <Navbar/>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/projects" element={<Project />} />
+          <Route path="/" element={<Dashboard />} />
         </Routes>
 
       </BrowserRouter>
