@@ -2,6 +2,7 @@ import { CircleCheckBig, Layers, Plus, Timer, Zap } from "lucide-react"
 import { useForm } from "react-hook-form"
 import StatCard from "../components/StatCard"
 import AllProjectsGrid from "../Feature/Projects/components/allProjectsGrid"
+import axios from "axios"
 import {
     Dialog,
     DialogContent,
@@ -27,8 +28,10 @@ export const Dashboard = () => {
         },
     })
 
-    const onSubmit = async (data:NewProject) => {
-        console.log(data)
+    const CreateProject = async (data:NewProject) => {
+        // console.log(data)
+        const newProject = await axios.post("http//localhost:5000/projects",data)
+        console.log(newProject)
     }
 
     return (
@@ -63,7 +66,7 @@ export const Dashboard = () => {
                                 Fill all project fields before creating it.
                             </DialogDescription>
                         </DialogHeader>
-                        <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-4">
+                        <form onSubmit={handleSubmit(CreateProject)} className="grid grid-cols-1 gap-4">
                             <div className="flex flex-col gap-2">
                                 <label htmlFor="title" className="text-sm font-medium text-slate-300">Title</label>
                                 <input
