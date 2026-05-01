@@ -15,8 +15,8 @@ app.use(express.json());
 app.use("/projects", ProjectRouter)
 
 // Apply Clerk middleware to all routes
-app.get("/",async (req,res) => {
-    res.send("Hello World");
+app.get("/health",async (req,res) => {
+    res.send("App is working fine");
 })
 
 app.listen(PORT, () => {

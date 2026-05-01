@@ -11,7 +11,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "../components/ui/dialog"
-import { type NewProject } from "../../../backend/db/schema.ts"
+import type { NewProject } from "../types/projecttype"
 
 
 export const Dashboard = () => {
